@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="loan department"  thread-count="3">            <!-- no of tests to run parallell-->
+	                                                                        <!-- based upon no of tests available-->
+  <listeners>
+	  <listener class-name="test.Listeners"/>
+  </listeners>
+	
+  <parameter name="URL" value="QACLICKACADEMY"/>                            <!-- Suite level-->
+  
+  <test name="personal loan"  thread-count="2">             <!-- to run classes in parallel-->	  
+    <parameter name="URL" value="personalloan"/>                            <!-- test level-->
+	<parameter name="APIKEY" value="api"/>	  
+    <classes  >
+      <class name="test.day1"/>
+      <class name="test.day2">
+		  <methods>
+			  <exclude name="mobile.*"/>  
+		  </methods>
+	  </class>
+    </classes>
+  </test> 
+ 
+  <test name="car loan">  
+	<parameter name="URL" value="carloan"/>
+	<classes>
+	  <class name="test.day3">
+		  <methods>
+			  <exclude name="mobilelogincarloan"/>
+		  </methods>
+	  </class>
+	</classes>
+  </test>
+ 
+  <test name="home loan">
+	<classes>
+      <class name="test.day4">
+         <methods>
+			  <include name="mobileloginhomeloan"/>
+		  </methods>
+	  </class> 
+	  <class name="test.day3">                                          <!-- just for understanding difference-->
+		  <methods>
+			  <include name="mobilelogincarloan"/>
+		  </methods>
+	  </class> 
+	</classes>
+  </test>
+  
+</suite> 

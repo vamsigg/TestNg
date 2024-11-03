@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="loan department">
+  
+  <parameter name="URL"  value="QACLICKACADEMY"/>
+  
+  <test name="carloan">
+	<classes>
+      <class name="test.day2"></class>  
+	</classes>
+  </test>
+  
+  <test name="homeloan">
+	<classes>
+      <class name="test.day4">
+         <methods>
+			  <include name="mobileloginhomeloan"/>
+		 </methods>
+	  </class>  
+	</classes>
+  </test>
+  
+</suite> 
